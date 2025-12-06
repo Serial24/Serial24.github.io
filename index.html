@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Bangla Serial 24</title>
+<title>Bangla Serial 24 - Watch Latest Episodes</title>
 
-<!-- ============================================== -->
-<!-- 1. MICROSOFT CLARITY TRACKING CODE ADDED HERE  -->
-<!-- ============================================== -->
+<meta property="og:title" content="Bangla Serial 24 - Latest Full Episodes" />
+<meta property="og:description" content="Watch the newest episodes of Zee Bangla and Star Jalsha serials daily, all in one place." />
+<meta property="og:url" content="https://serial24.github.io/" /> 
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://serial24.github.io/assets/share-image-1200x630.jpg" /> 
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ugqovbrpxw");
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ugqovbrpxw");
 </script>
-<!-- ============================================== -->
-
-<!-- Plyr CSS -->
 <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-<!-- FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -76,7 +76,7 @@
 <script>
 // Encoded API Key
 const _0x1a2b = 'aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4LW5WLWVzbEkyaEpEeER5dG4ta2Z2TUNQZEZOemUxMDFGeTBucGgtZVJ6VUVPY1R4NUVlcTF2bE56SlVBWVZ6S28vZXhlYw==';
-const API_URL = atob(_0x1a2b); 
+const API_URL = atob(_0x1a2b); 
 
 let allData = [];
 let player = null;
@@ -84,164 +84,164 @@ let isFirstPlayAttempt = true;
 let centerButtonTimer;
 
 fetch(API_URL).then(res => res.json()).then(data => {
-    document.getElementById('loader').style.display = 'none';
-    allData = data;
-    switchTab('zee');
+    document.getElementById('loader').style.display = 'none';
+    allData = data;
+    switchTab('zee');
 });
 
 function switchTab(tab) {
-    const content = document.getElementById('content-area');
-    content.innerHTML = '';
-    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-    if(tab !== 'search') document.getElementById('btn-' + tab)?.classList.add('active');
+    const content = document.getElementById('content-area');
+    content.innerHTML = '';
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    if(tab !== 'search') document.getElementById('btn-' + tab)?.classList.add('active');
 
-    if (tab === 'zee') renderFullPage('Zee Bangla Serials', 'zee');
-    else if (tab === 'star') renderFullPage('Star Jalsha Serials', 'star');
+    if (tab === 'zee') renderFullPage('Zee Bangla Serials', 'zee');
+    else if (tab === 'star') renderFullPage('Star Jalsha Serials', 'star');
 }
 
 function renderFullPage(title, keyword) {
-    const container = document.getElementById('content-area');
-    let items = allData.filter(d => d.category.toLowerCase().includes(keyword));
-    if (items.length === 0) { container.innerHTML = `<div class="loader">No shows found.</div>`; return; }
-    shuffleArray(items);
-    container.innerHTML = `<div class="section-header">${title}</div><div class="video-grid">${items.map(item => createCard(item)).join('')}</div>`;
+    const container = document.getElementById('content-area');
+    let items = allData.filter(d => d.category.toLowerCase().includes(keyword));
+    if (items.length === 0) { container.innerHTML = `<div class="loader">No shows found.</div>`; return; }
+    shuffleArray(items);
+    container.innerHTML = `<div class="section-header">${title}</div><div class="video-grid">${items.map(item => createCard(item)).join('')}</div>`;
 }
 
 function createCard(item) {
-    const itemString = encodeURIComponent(JSON.stringify(item));
-    return `<div class="card" onclick="openEnhancedPlayer('${itemString}')">
-    <img src="${item.thumbnail}" class="thumb" loading="lazy">
-    <div class="info"><div class="vid-title">${item.title}</div><div class="vid-date">${formatPrettyDate(item.date)}</div></div>
-    </div>`;
+    const itemString = encodeURIComponent(JSON.stringify(item));
+    return `<div class="card" onclick="openEnhancedPlayer('${itemString}')">
+    <img src="${item.thumbnail}" class="thumb" loading="lazy">
+    <div class="info"><div class="vid-title">${item.title}</div><div class="vid-date">${formatPrettyDate(item.date)}</div></div>
+    </div>`;
 }
 
 function formatPrettyDate(isoString) {
-    if(!isoString) return "Recently Updated";
-    try {
-        const date = new Date(isoString);
-        return date.toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' });
-    } catch(e) { return isoString; }
+    if(!isoString) return "Recently Updated";
+    try {
+        const date = new Date(isoString);
+        return date.toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' });
+    } catch(e) { return isoString; }
 }
 
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
 }
 
 document.getElementById('search').addEventListener('input', (e) => {
-    const term = e.target.value.toLowerCase();
-    const content = document.getElementById('content-area');
-    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-    if (term === '') { switchTab('zee'); return; }
-    let filtered = allData.filter(item => item.title.toLowerCase().includes(term));
-    content.innerHTML = `<div class="section-header">Search Results</div><div class="video-grid">${filtered.map(item => createCard(item)).join('')}</div>`;
+    const term = e.target.value.toLowerCase();
+    const content = document.getElementById('content-area');
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    if (term === '') { switchTab('zee'); return; }
+    let filtered = allData.filter(item => item.title.toLowerCase().includes(term));
+    content.innerHTML = `<div class="section-header">Search Results</div><div class="video-grid">${filtered.map(item => createCard(item)).join('')}</div>`;
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    player = new Plyr('#player', {
-        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'],
-        autoplay: false,
-        resetOnEnd: true
-    });
+    player = new Plyr('#player', {
+        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'],
+        autoplay: false,
+        resetOnEnd: true
+    });
 
-    player.on('play', () => showCenterIcon('fa-play', false));
-    player.on('pause', () => showCenterIcon('fa-pause', true));
+    player.on('play', () => showCenterIcon('fa-play', false));
+    player.on('pause', () => showCenterIcon('fa-pause', true));
 });
 
 function openEnhancedPlayer(encodedItem) {
-    const item = JSON.parse(decodeURIComponent(encodedItem));
+    const item = JSON.parse(decodeURIComponent(encodedItem));
 
-    document.getElementById('video-info-title').innerText = item.title;
-    document.getElementById('video-info-date').innerText = formatPrettyDate(item.date);
-    document.getElementById('video-info-cat').innerText = item.category;
+    document.getElementById('video-info-title').innerText = item.title;
+    document.getElementById('video-info-date').innerText = formatPrettyDate(item.date);
+    document.getElementById('video-info-cat').innerText = item.category;
 
-    // ============================================
-    // 2. THIS IS WHERE WE SEND DATA TO CLARITY
-    // We create a custom 'Tag' whenever a video is clicked
-    // ============================================
-    if (typeof clarity === "function") {
-        // This sends the Video Title to Clarity dashboard
-        clarity("set", "Serial_Name", item.title);
-        // This creates a timeline event
-        clarity("event", "Video_Clicked");
-    }
-    // ============================================
+    // ============================================
+    // 2. THIS IS WHERE WE SEND DATA TO CLARITY
+    // We create a custom 'Tag' whenever a video is clicked
+    // ============================================
+    if (typeof clarity === "function") {
+        // This sends the Video Title to Clarity dashboard
+        clarity("set", "Serial_Name", item.title);
+        // This creates a timeline event
+        clarity("event", "Video_Clicked");
+    }
+    // ============================================
 
-    player.source = {
-        type: 'video',
-        title: item.title,
-        poster: item.thumbnail,
-        sources: [{ src: item.videoUrl, type: 'video/mp4' }]
-    };
+    player.source = {
+        type: 'video',
+        title: item.title,
+        poster: item.thumbnail,
+        sources: [{ src: item.videoUrl, type: 'video/mp4' }]
+    };
 
-    renderRecommendations(item.title);
+    renderRecommendations(item.title);
 
-    isFirstPlayAttempt = true;
-    document.getElementById('initial-play-overlay').style.display = 'flex';
-    document.getElementById('spinner-loader-screen').style.display = 'none';
-    document.getElementById('browsing-layer').style.display = 'none';
-    document.getElementById('player-virtual-page').style.display = 'flex';
-    document.getElementById('player-virtual-page').scrollTop = 0;
+    isFirstPlayAttempt = true;
+    document.getElementById('initial-play-overlay').style.display = 'flex';
+    document.getElementById('spinner-loader-screen').style.display = 'none';
+    document.getElementById('browsing-layer').style.display = 'none';
+    document.getElementById('player-virtual-page').style.display = 'flex';
+    document.getElementById('player-virtual-page').scrollTop = 0;
 }
 
 function renderRecommendations(currentTitle) {
-    const recContainer = document.getElementById('recommendations-grid');
-    let recs = allData.filter(d => d.title !== currentTitle);
-    shuffleArray(recs);
-    recs = recs.slice(0, 12);
-    recContainer.innerHTML = recs.map(item => createCard(item)).join('');
+    const recContainer = document.getElementById('recommendations-grid');
+    let recs = allData.filter(d => d.title !== currentTitle);
+    shuffleArray(recs);
+    recs = recs.slice(0, 12);
+    recContainer.innerHTML = recs.map(item => createCard(item)).join('');
 }
 
 function shareVideo() {
-    const shareData = {
-        title: 'Bangla Serial 24',
-        text: 'Watch latest Serial videos!',
-        url: 'https://serial24.github.io/'
-    };
-    if (navigator.share) {
-        navigator.share(shareData);
-    } else {
-        navigator.clipboard.writeText(shareData.url);
-        alert('Link copied: ' + shareData.url);
-    }
+    const shareData = {
+        title: 'Bangla Serial 24',
+        text: 'Watch latest Serial videos!',
+        url: 'https://serial24.github.io/'
+    };
+    if (navigator.share) {
+        navigator.share(shareData);
+    } else {
+        navigator.clipboard.writeText(shareData.url);
+        alert('Link copied: ' + shareData.url);
+    }
 }
 
 document.getElementById('exit-player-btn').addEventListener('click', () => {
-    player.stop();
-    document.getElementById('player-virtual-page').style.display = 'none';
-    document.getElementById('browsing-layer').style.display = 'block';
-    if (document.fullscreenElement) document.exitFullscreen();
+    player.stop();
+    document.getElementById('player-virtual-page').style.display = 'none';
+    document.getElementById('browsing-layer').style.display = 'block';
+    if (document.fullscreenElement) document.exitFullscreen();
 });
 
 document.getElementById('initial-play-btn').addEventListener('click', () => {
-    if (isFirstPlayAttempt) {
-        document.getElementById('initial-play-overlay').style.display = 'none';
-        document.getElementById('spinner-loader-screen').style.display = 'flex';
-        setTimeout(() => {
-            document.getElementById('spinner-loader-screen').style.display = 'none';
-            player.play();
-            isFirstPlayAttempt = false;
-        }, 1000);
-    }
+    if (isFirstPlayAttempt) {
+        document.getElementById('initial-play-overlay').style.display = 'none';
+        document.getElementById('spinner-loader-screen').style.display = 'flex';
+        setTimeout(() => {
+            document.getElementById('spinner-loader-screen').style.display = 'none';
+            player.play();
+            isFirstPlayAttempt = false;
+        }, 1000);
+    }
 });
 
 function showCenterIcon(iconClass, show) {
-    const btn = document.getElementById('center-play-pause-btn');
-    btn.innerHTML = `<i class="fas ${iconClass}"></i>`;
-    if(show) {
-        btn.style.opacity = '1';
-        clearTimeout(centerButtonTimer);
-        centerButtonTimer = setTimeout(() => { btn.style.opacity = '0'; }, 800);
-    } else { btn.style.opacity = '0'; }
+    const btn = document.getElementById('center-play-pause-btn');
+    btn.innerHTML = `<i class="fas ${iconClass}"></i>`;
+    if(show) {
+        btn.style.opacity = '1';
+        clearTimeout(centerButtonTimer);
+        centerButtonTimer = setTimeout(() => { btn.style.opacity = '0'; }, 800);
+    } else { btn.style.opacity = '0'; }
 }
 
 document.onkeydown = function(e) {
-    if(event.keyCode == 123) return false;
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
-    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+    if(event.keyCode == 123) return false;
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
 }
 
 </script>
